@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Catalog.Core.Entities;
+using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Data
 {
-    internal class ICatalogContext
+    public interface ICatalogContext
     {
+        IMongoCollection<Product> Products { get; }
+        IMongoCollection<Category> Categories { get; }
     }
 }
