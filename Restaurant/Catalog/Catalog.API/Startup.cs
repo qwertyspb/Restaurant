@@ -29,7 +29,7 @@ namespace Catalog.API
                     HealthStatus.Degraded);
             services.AddSwaggerGen(x => x.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Catalog. API",
+                Title = "Catalog.API",
                 Version = "v1"
             }));
 
