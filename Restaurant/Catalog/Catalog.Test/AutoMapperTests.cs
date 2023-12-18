@@ -1,4 +1,5 @@
 using AutoMapper;
+using Catalog.API.Mappers;
 using Catalog.Application.Mappers;
 using NUnit.Framework;
 
@@ -14,6 +15,7 @@ namespace Catalog.Test
             _configuration = new MapperConfiguration(x =>
             {
                 x.AddProfile<MappingProfile>();
+                x.AddProfile<ApiMappingProfile>();
             });
         }
 
