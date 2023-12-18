@@ -1,9 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using MediatR;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Catalog.Core.Entities
+namespace Catalog.Application.Commands
 {
-    public class Product : BaseEntity
+    public class CreateProductCommand : IRequest
     {
         [BsonElement("Name")]
         public string Name { get; set; }
@@ -12,11 +12,8 @@ namespace Catalog.Core.Entities
 
         public string Image { get; set; }
 
-        [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
 
-        public bool IsDeleted { get; set; }
-
-        public Category Category { get; set; }
+        public string CategoryId { get; set; }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Catalog.Application.Responses;
+using MediatR;
 
 namespace Catalog.Application.Queries
 {
-    internal class GetProductsByCategoryQuery
+    public class GetProductsByCategoryQuery : IRequest<List<ProductModel>>
     {
+        public string CategoryId { get; set; }
+
+        public GetProductsByCategoryQuery(string categoryId)
+        {
+            CategoryId = categoryId;
+        }
     }
 }

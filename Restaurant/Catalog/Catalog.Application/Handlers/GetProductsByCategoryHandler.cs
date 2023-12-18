@@ -1,12 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Catalog.Application.Mappers;
+using Catalog.Application.Queries;
+using Catalog.Application.Responses;
+using Catalog.Core.IRepositories;
+using MediatR;
+using MongoDB.Driver;
 
 namespace Catalog.Application.Handlers
 {
-    internal class GetProductsByCategoryHandler
+    public class GetProductsByCategoryHandler : IRequestHandler<GetProductsByCategoryQuery, List<ProductModel>>
     {
+        private readonly IProductRepository _repo;
+
+        public GetProductsByCategoryHandler(IProductRepository repo)
+        {
+            _repo = repo;
+        }
+
+        public async Task<List<ProductModel>> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
+        {
+            var products = (await _repo.GetProducts(x => x.Category.Id == request.CategoryId))
+                .ToListAsync(cancellationToken);
+
+            return CatalogMapper.Mapper.Map<List<ProductModel>>(products);
+        }
     }
 }

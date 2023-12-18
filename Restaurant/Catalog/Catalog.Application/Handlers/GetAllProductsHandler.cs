@@ -18,7 +18,7 @@ namespace Catalog.Application.Handlers
 
         public async Task<List<ProductModel>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = (await _repo.GetProducts(x => true))
+            var products = (await _repo.GetProducts(x => !x.IsDeleted))
                 .ToListAsync(cancellationToken);
 
             return CatalogMapper.Mapper.Map<List<ProductModel>>(products);
