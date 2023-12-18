@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
-namespace Catalog.API
+﻿namespace Catalog.API
 {
     public class Startup
     {
