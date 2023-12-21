@@ -1,12 +1,13 @@
-{
+[
   {
-    "Name": "Desserts",
-    "Description": "Просто тортик",
+    "Name": "Cake",
+    "Description": "Just a cake",
     "Image": "https://cdn.bfm.ru/news/photopreviewextralarge/2021/12/10/krab.jpg",
     "Price": 1000,
     "IsDeleted": false,
     "Category": {
+      "Id": "658438af50747de5cc8eb239",
       "Name": "Desserts"
     }
   }
-}
+]

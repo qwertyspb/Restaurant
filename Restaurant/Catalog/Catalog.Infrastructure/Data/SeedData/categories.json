@@ -1,17 +1,22 @@
-{
+[
   {
+    "Id": "658438af50747de5cc8eb236",
     "Name": "Salads"
   },
   {
+    "Id": "658438af50747de5cc8eb237",
     "Name": "Soups"
   },
   {
+    "Id": "658438af50747de5cc8eb238",
     "Name": "MainCourses"
   },
   {
+    "Id": "658438af50747de5cc8eb239",
     "Name": "Desserts"
   },
   {
+    "Id": "658438af50747de5cc8eb23a",
     "Name": "Beverages"
   }
-}
+]

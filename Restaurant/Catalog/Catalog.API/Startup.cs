@@ -1,13 +1,13 @@
-﻿using Catalog.Core.IRepositories;
+﻿using Catalog.API.Mappers;
+using Catalog.Application.Handlers;
+using Catalog.Application.Mappers;
+using Catalog.Core.IRepositories;
 using Catalog.Infrastructure.Data;
 using Catalog.Infrastructure.Repositories;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
-using Catalog.API.Mappers;
-using Catalog.Application.Mappers;
 
 namespace Catalog.API
 {
@@ -39,7 +39,7 @@ namespace Catalog.API
                 x.AddProfile<MappingProfile>();
                 x.AddProfile<ApiMappingProfile>();
             });
-            services.AddMediatR(x => x.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<CreateProductHandler>());
 
             services.AddScoped<ICatalogContext, CatalogContext>();
             services.AddScoped<IProductRepository, CatalogRepository>();

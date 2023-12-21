@@ -18,6 +18,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
+        [Route("[action]")]
         [ProducesResponseType(typeof(List<ProductApiModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAllProducts(CancellationToken token)
         {
@@ -26,6 +27,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpGet]
+        [Route("[action]")]
         [ProducesResponseType(typeof(List<CategoryApiModel>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAllCategories(CancellationToken token)
         {
@@ -43,6 +45,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpPost]
+        [Route("[action]")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductApiModel model, CancellationToken token)
         {
@@ -53,6 +56,7 @@ namespace Catalog.API.Controllers
         }
 
         [HttpPatch]
+        [Route("[action]")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductApiModel model, CancellationToken token)
         {
@@ -65,7 +69,7 @@ namespace Catalog.API.Controllers
         [HttpDelete]
         [Route("[action]/{productId}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateProduct(string productId, CancellationToken token)
+        public async Task<IActionResult> DeleteProduct(string productId, CancellationToken token)
         {
             await _mediator.Send(new DeleteProductCommand { ProductId = productId }, token);
             return Ok();
