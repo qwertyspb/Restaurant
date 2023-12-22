@@ -1,9 +1,105 @@
 [
   {
-    "Id": "6585305990268c41b1349621",
-    "Name": "Cake",
-    "Description": "Just a cake",
-    "Image": "https://cdn.bfm.ru/news/photopreviewextralarge/2021/12/10/krab.jpg",
+    "Id": "65856f909a3fdc103e232831",
+    "Name": "Стейк",
+    "Description": "Стейк идеальной medium-rare прожарки, маринованный в специальном составе от нашего шеф-повара. Подается вместе с фермерским ржаным хлебом, стеблями спаржи и дижонской горчицей.",
+    "Image": "https://www.mentoday.ru/upload/img_cache/0c2/0c283d1b2188c201b5dde26a314b1ecc_ce_1580x1053x0x0_cropped_666x444.webp",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb238",
+      "Name": "MainCourses"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232832",
+    "Name": "Бургер",
+    "Description": "Бургер с сочной котлетой из цезарки и картошка-фри с соусом из пармезана. Обновленная классика - что может быть идеальнее?",
+    "Image": "https://medportal.ru/pictures/news/120e88dd-a2b7-4f74-a61e-0906c0bdfaf3/medium.jpg",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb238",
+      "Name": "MainCourses"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232833",
+    "Name": "Карбонара",
+    "Description": "Карбонара - одна из самых часто изготавливаемых паст в мире. Мы разнообразили ее зажаренными до хруста свиными ушками, базиликовым маслом и особым сортом пармезана, выдержанным в дубовых бочках около 6 месяцев.",
+    "Image": "https://img.freepik.com/premium-photo/a-wooden-cutting-board-with-spaghetti-and-a-plate-of-food-on-it_651966-262.jpg?w=740",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb238",
+      "Name": "MainCourses"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232834",
+    "Name": "Стейк из семги",
+    "Description": "Стейк из семги, зажаренный на гриле вместе с овощами и манго и посыпанный сверху крошкой Грано Падана.",
+    "Image": "https://img.freepik.com/premium-photo/a-wooden-cutting-board-with-spaghetti-and-a-plate-of-food-on-it_651966-262.jpg?w=740",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb238",
+      "Name": "MainCourses"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232835",
+    "Name": "Боул с тунцом",
+    "Description": "Освежающий морским бризом боул с кускусом, тихоокеанским тунцом, бобами эдадами и битыми огурцами.",
+    "Image": "https://static.insales-cdn.com/files/1/1508/12486116/original/NahoblTQ0u.jpg",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb238",
+      "Name": "MainCourses"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232836",
+    "Name": "Тыквенный суп",
+    "Description": "Тыквенный суп с острым кайенским перцем, фенхелем и стеблем сельдерея. Подается с чесночным багетом.",
+    "Image": "https://n1s1.hsmedia.ru/3c/fc/fd/3cfcfd451cce8473d05b5142fa939696/728x486_1_233716b608b28f21d93e5f8080a2a9e6@5000x3338_0xac120003_20119748261647215266.jpeg",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb237",
+      "Name": "Soups"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232837",
+    "Name": "Черничный чизкейк",
+    "Description": "Классический чизкейк с черничным конфи.",
+    "Image": "https://smachnonews.24tv.ua/resources/photos/news/202312/2451745_16631795.jpg?v=1702477724000&w=768&h=1152&fit=cover%27&output=webp",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb239",
+      "Name": "Desserts"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232838",
+    "Name": "Тарталетка",
+    "Description": "Песочное тесто по рецепту величайшего кодитера Франсуа Готти, нежный воздушный заварной крем и пикантная кислинка красной смородины. Тарталетка никого не оставит равндушным.",
+    "Image": "https://cdn.bbmd.gr/media/news/2023/07/22/1451081/figure/zaxaroplasteio.jpg",
+    "Price": 1000,
+    "IsDeleted": false,
+    "Category": {
+      "Id": "658438af50747de5cc8eb239",
+      "Name": "Desserts"
+    }
+  },
+  {
+    "Id": "65856f909a3fdc103e232839",
+    "Name": "Безе",
+    "Description": "Хрустящее безе с таящей во рту корочкой, украшенной миндальными лепестками, взбитый белковый крем и желе из голубики - этот десерт покорит сердце даже самого привередливого гурмана.",
+    "Image": "https://images.unsplash.com/photo-1541781026221-10a122752d09?auto=format&fit=crop&w=656&h=756",
     "Price": 1000,
     "IsDeleted": false,
     "Category": {
