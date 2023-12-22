@@ -17,5 +17,7 @@ namespace Catalog.Application.Responses
         public string Image { get; set; }
 
         public decimal Price { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

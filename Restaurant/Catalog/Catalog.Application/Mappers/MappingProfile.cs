@@ -9,7 +9,8 @@ namespace Catalog.Application.Mappers
         public MappingProfile()
         {
             CreateMap<Category, CategoryModel>();
-            CreateMap<Product, ProductModel>();
+            CreateMap<Product, ProductModel>()
+                .ForMember(dst => dst.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Catalog.Application.Handlers
                 .Image(request.Image)
                 .Price(request.Price);
 
-            if (!string.IsNullOrEmpty(request.CategoryId))
+            if (!string.IsNullOrWhiteSpace(request.CategoryId))
             {
                 var category = await _categoryRepository.GetCategoryById(request.CategoryId) ??
                                throw new InvalidOperationException($"Category id={request.CategoryId} is not found");
