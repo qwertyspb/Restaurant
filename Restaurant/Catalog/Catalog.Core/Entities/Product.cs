@@ -1,9 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using Catalog.Core.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog.Core.Entities
 {
-    public class Product : BaseEntity
+    public class Product : BaseEntity, IHaveImage
     {
         [BsonElement("Name")]
         public string Name { get; set; }

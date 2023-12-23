@@ -1,4 +1,5 @@
 ﻿using Catalog.Core.Entities;
+using Catalog.Core.Interfaces;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 
@@ -12,20 +13,22 @@ namespace Catalog.Infrastructure.Data
             var path = Path.Combine("Data", "SeedData", fileName);
             var any = collection.Find(x => true).Any();
 
-            if (!any)
-            {
-                var data = File.ReadAllText(path);
-                var entities = JsonConvert.DeserializeObject<List<T>>(data);
+            if (any) 
+                return;
 
-                if (entities is null)
-                    return;
+            var data = File.ReadAllText(path);
+            var entities = JsonConvert.DeserializeObject<List<T>>(data);
+
+            if (entities is null)
+                return;
                 
-                entities.ForEach(x => x.CreatedOn = DateTime.Now);
-                collection.InsertMany(entities);
-            }
+            SetCreatedOn(entities);
+
+            collection.InsertMany(entities);
         }
 
-        public static void SeedProducts(IMongoCollection<Product> collection, string fileName)
+        public static void SeedWithImage<T>(IMongoCollection<T> collection, string fileName, string imagesFileName)
+            where T : BaseEntity, IHaveImage
         {
             var path = Path.Combine("Data", "SeedData", fileName);
             var any = collection.Find(x => true).Any();
@@ -34,27 +37,39 @@ namespace Catalog.Infrastructure.Data
                 return;
 
             var data = File.ReadAllText(path);
-            var products = JsonConvert.DeserializeObject<List<Product>>(data);
+            var entities = JsonConvert.DeserializeObject<List<T>>(data);
 
-            if (products is null)
+            if (entities is null)
                 return;
 
-            var images = GetImages("productImages.json");
+            SetCreatedOn(entities);
 
-            foreach (var p in products)
+            if (!string.IsNullOrEmpty(imagesFileName))
+                SetImages(entities, imagesFileName);
+
+            collection.InsertMany(entities);
+        }
+
+
+        private static void SetCreatedOn<T>(List<T> entities) where T : BaseEntity
+            => entities.ForEach(x => x.CreatedOn = DateTime.Now);
+
+        private static void SetImages<T>(List<T> entities, string imagesFileName) where T : BaseEntity, IHaveImage
+        {
+            var images = GetImages(imagesFileName);
+
+            foreach (var e in entities)
             {
-                var image = images.FirstOrDefault(x => x.EntityId == p.Id);
+                var image = images.FirstOrDefault(x => x.EntityId == e.Id);
 
                 if (image is null)
                 {
-                    p.Image = string.Empty;
+                    e.Image = string.Empty;
                     continue;
                 }
 
-                p.Image = ImagesPath + image.Url;
+                e.Image = ImagesPath + image.Url;
             }
-
-            collection.InsertMany(products);
         }
 
         private static List<Image> GetImages(string fileName)
