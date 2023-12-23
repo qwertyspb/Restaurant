@@ -7,7 +7,7 @@ namespace Catalog.Infrastructure.Data
     public class SeedingFactory
     {
         private static readonly string ImagesPath = Path.Combine("Data", "SeedData", "Images");
-        public static void Seed<T>(IMongoCollection<T> collection, string fileName) where T : class
+        public static void Seed<T>(IMongoCollection<T> collection, string fileName) where T : BaseEntity
         {
             var path = Path.Combine("Data", "SeedData", fileName);
             var any = collection.Find(x => true).Any();
@@ -15,10 +15,13 @@ namespace Catalog.Infrastructure.Data
             if (!any)
             {
                 var data = File.ReadAllText(path);
-                var entities = JsonConvert.DeserializeObject<IEnumerable<T>>(data);
+                var entities = JsonConvert.DeserializeObject<List<T>>(data);
 
-                if (entities is not null)
-                    collection.InsertMany(entities);
+                if (entities is null)
+                    return;
+                
+                entities.ForEach(x => x.CreatedOn = DateTime.Now);
+                collection.InsertMany(entities);
             }
         }
 

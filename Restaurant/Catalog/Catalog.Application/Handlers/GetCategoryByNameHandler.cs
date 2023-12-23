@@ -19,7 +19,7 @@ namespace Catalog.Application.Handlers
         public async Task<CategoryModel> Handle(GetCategoryByNameQuery request, CancellationToken cancellationToken)
         {
             var category =
-                await _repo.GetCategories(x => x.Name.Equals(request.Name))
+                await _repo.GetCategories(x => string.Equals(x.Name, request.Name, StringComparison.OrdinalIgnoreCase))
                     .SingleOrDefaultAsync(cancellationToken) ??
                 throw new InvalidOperationException($"Category name={request.Name} is not found");
 

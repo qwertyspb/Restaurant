@@ -11,5 +11,8 @@ namespace Catalog.Core.Entities
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime CreatedOn { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime? ModifiedOn { get; set; }
     }
 }

@@ -17,8 +17,11 @@ namespace Catalog.Infrastructure.Repositories
 
         #region Product
 
-        public Task CreateProduct(Product product)
-            => _ctx.Products.InsertOneAsync(product);
+        public async Task CreateProduct(Product product)
+        {
+            product.CreatedOn = DateTime.Now;
+            await _ctx.Products.InsertOneAsync(product);
+        }
 
         public Task<Product> GetProductById(string id)
             => _ctx.Products.Find(x => x.Id == id).SingleOrDefaultAsync();
@@ -26,25 +29,25 @@ namespace Catalog.Infrastructure.Repositories
         public IFindFluent<Product, Product> GetProducts(Expression<Func<Product, bool>> condition)
             => _ctx.Products.Find(condition);
 
-        public async Task<bool> UpdateProduct(Product product)
+        public async Task UpdateProduct(Product product)
         {
-            var result = await _ctx.Products.ReplaceOneAsync(x => x.Id == product.Id, product);
-            return result.IsAcknowledged;
+            product.ModifiedOn = DateTime.Now;
+            await _ctx.Products.ReplaceOneAsync(x => x.Id == product.Id, product);
         }
 
-        public async Task<bool> DeleteProduct(string id)
-        {
-            var result = await _ctx.Products.DeleteOneAsync(x => x.Id == id);
-            return result.IsAcknowledged;
-        }
+        public Task DeleteProduct(string id)
+           => _ctx.Products.DeleteOneAsync(x => x.Id == id);
 
         #endregion
 
 
         #region Category
 
-        public Task CreateCategory(Category category)
-            => _ctx.Categories.InsertOneAsync(category);
+        public async Task CreateCategory(Category category)
+        {
+            category.CreatedOn = DateTime.Now;
+            await _ctx.Categories.InsertOneAsync(category);
+        }
 
         public Task<Category> GetCategoryById(string id)
             => _ctx.Categories.Find(x => x.Id == id).SingleOrDefaultAsync();
@@ -52,17 +55,14 @@ namespace Catalog.Infrastructure.Repositories
         public IFindFluent<Category, Category> GetCategories(Expression<Func<Category, bool>> condition)
             => _ctx.Categories.Find(condition);
         
-        public async Task<bool> UpdateCategory(Category category)
+        public async Task UpdateCategory(Category category)
         {
-            var result = await _ctx.Categories.ReplaceOneAsync(x => x.Id == category.Id, category);
-            return result.IsAcknowledged;
+            category.ModifiedOn = DateTime.Now;
+            await _ctx.Categories.ReplaceOneAsync(x => x.Id == category.Id, category);
         }
 
-        public async Task<bool> DeleteCategory(string id)
-        {
-            var result = await _ctx.Categories.DeleteOneAsync(x => x.Id == id);
-            return result.IsAcknowledged;
-        }
+        public Task DeleteCategory(string id)
+            => _ctx.Categories.DeleteOneAsync(x => x.Id == id);
 
         #endregion
     }
