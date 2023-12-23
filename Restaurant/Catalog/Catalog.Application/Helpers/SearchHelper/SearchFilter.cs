@@ -1,9 +1,10 @@
 ﻿namespace Catalog.Application.Helpers.SearchHelper
 {
-    public class SearchingParameters
+    public class SearchFilter
     {
         private const int MaxPageSize = 70;
         public int PageIndex { get; set; } = 1;
+
 
         private int _pageSize = 10;
         public int PageSize

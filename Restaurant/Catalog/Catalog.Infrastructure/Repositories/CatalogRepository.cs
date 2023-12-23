@@ -29,6 +29,9 @@ namespace Catalog.Infrastructure.Repositories
         public IFindFluent<Product, Product> GetProducts(Expression<Func<Product, bool>> condition)
             => _ctx.Products.Find(condition);
 
+        public IFindFluent<Product, Product> GetProducts(FilterDefinition<Product> filter)
+            => _ctx.Products.Find(filter);
+
         public async Task UpdateProduct(Product product)
         {
             product.ModifiedOn = DateTime.Now;

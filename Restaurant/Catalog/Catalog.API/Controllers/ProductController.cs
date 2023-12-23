@@ -5,6 +5,7 @@ using Catalog.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Catalog.Application.Helpers.SearchHelper;
 
 namespace Catalog.API.Controllers
 {
@@ -19,11 +20,14 @@ namespace Catalog.API.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        [ProducesResponseType(typeof(List<ProductApiModel>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetFilteredProducts(CancellationToken token)
+        [ProducesResponseType(typeof(Pagination<ProductApiModel>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetFilteredProducts([FromQuery] ApiSearchFilter request, CancellationToken token)
         {
-            var products = await _mediator.Send(new GetFilteredProductsQuery(), token);
-            return Ok(ApiCatalogMapper.Mapper.Map<List<ProductApiModel>>(products));
+            var filter = ApiCatalogMapper.Mapper.Map<SearchFilter>(request);
+
+            var products = await _mediator.Send(new GetFilteredProductsQuery { SearchFilter = filter }, token);
+
+            return Ok(ApiCatalogMapper.Mapper.Map<Pagination<ProductApiModel>>(products));
         }
 
         [HttpGet]
