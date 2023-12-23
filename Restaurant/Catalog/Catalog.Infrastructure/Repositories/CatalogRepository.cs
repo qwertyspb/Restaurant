@@ -23,8 +23,8 @@ namespace Catalog.Infrastructure.Repositories
         public Task<Product> GetProductById(string id)
             => _ctx.Products.Find(x => x.Id == id).SingleOrDefaultAsync();
 
-        public Task<IFindFluent<Product, Product>> GetProducts(Expression<Func<Product, bool>> condition)
-            => Task.FromResult(_ctx.Products.Find(condition));
+        public IFindFluent<Product, Product> GetProducts(Expression<Func<Product, bool>> condition)
+            => _ctx.Products.Find(condition);
 
         public async Task<bool> UpdateProduct(Product product)
         {
@@ -49,8 +49,8 @@ namespace Catalog.Infrastructure.Repositories
         public Task<Category> GetCategoryById(string id)
             => _ctx.Categories.Find(x => x.Id == id).SingleOrDefaultAsync();
 
-        public Task<IFindFluent<Category, Category>> GetCategories(Expression<Func<Category, bool>> condition)
-            => Task.FromResult(_ctx.Categories.Find(condition));
+        public IFindFluent<Category, Category> GetCategories(Expression<Func<Category, bool>> condition)
+            => _ctx.Categories.Find(condition);
         
         public async Task<bool> UpdateCategory(Category category)
         {

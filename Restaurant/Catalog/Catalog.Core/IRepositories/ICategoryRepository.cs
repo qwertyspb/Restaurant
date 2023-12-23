@@ -8,7 +8,7 @@ namespace Catalog.Core.IRepositories
     {
         Task CreateCategory(Category category);
         Task<Category> GetCategoryById(string id);
-        Task<IFindFluent<Category, Category>> GetCategories(Expression<Func<Category, bool>> condition);
+        IFindFluent<Category, Category> GetCategories(Expression<Func<Category, bool>> condition);
         Task<bool> UpdateCategory(Category category);
         Task<bool> DeleteCategory(string id);
     }

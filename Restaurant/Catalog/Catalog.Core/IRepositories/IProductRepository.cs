@@ -8,7 +8,7 @@ namespace Catalog.Core.IRepositories
     {
         Task CreateProduct(Product product);
         Task<Product> GetProductById(string id);
-        Task<IFindFluent<Product, Product>> GetProducts(Expression<Func<Product, bool>> condition);
+        IFindFluent<Product, Product> GetProducts(Expression<Func<Product, bool>> condition);
         Task<bool> UpdateProduct(Product product); 
         Task<bool> DeleteProduct(string id);
     }

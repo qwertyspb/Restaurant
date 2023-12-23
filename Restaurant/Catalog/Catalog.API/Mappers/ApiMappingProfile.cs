@@ -13,6 +13,8 @@ namespace Catalog.API.Mappers
             CreateMap<CategoryModel, CategoryApiModel>();
             CreateMap<CreateProductApiModel, CreateProductCommand>();
             CreateMap<UpdateProductApiModel, UpdateProductCommand>();
+            CreateMap<CreateCategoryApiModel, CreateCategoryCommand>();
+            CreateMap<UpdateCategoryApiModel, UpdateCategoryCommand>();
         }
     }
 }

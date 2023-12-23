@@ -3,6 +3,6 @@ using MediatR;
 
 namespace Catalog.Application.Queries
 {
-    public class GetAllProductsQuery : IRequest<List<ProductModel>>
+    public class GetFilteredProductsQuery : IRequest<List<ProductModel>>
     { }
 }

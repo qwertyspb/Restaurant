@@ -18,8 +18,8 @@ namespace Catalog.Application.Handlers
 
         public async Task<List<CategoryModel>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
-            var categories = (await _repo.GetCategories(x => true))
-                .ToList(cancellationToken);
+            var categories = await _repo.GetCategories(x => true)
+                .ToListAsync(cancellationToken);
 
             return CatalogMapper.Mapper.Map<List<CategoryModel>>(categories);
         }
