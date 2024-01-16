@@ -1,6 +1,6 @@
-﻿namespace Basket.Application.Responses;
+﻿namespace Basket.Application.Dto;
 
-public class CartItemResponse
+public class CartItemDto
 {
     public int Quantity { get; set; }
     public decimal Price { get; set; }
