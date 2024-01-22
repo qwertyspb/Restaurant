@@ -7,5 +7,6 @@ namespace Catalog.Infrastructure.Data
     {
         IMongoCollection<Product> Products { get; }
         IMongoCollection<Category> Categories { get; }
+        IMongoCollection<Table> Tables { get; }
     }
 }

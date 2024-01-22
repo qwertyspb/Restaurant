@@ -21,13 +21,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{0E585956-5E80-46D3-95E3-3A8B809B8AC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Application", "Basket\Basket.Application\Basket.Application.csproj", "{AB73BD97-B840-481E-959E-D74EDEDF09F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Application", "Basket\Basket.Application\Basket.Application.csproj", "{AB73BD97-B840-481E-959E-D74EDEDF09F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Core", "Basket\Basket.Core\Basket.Core.csproj", "{3CF4B8A3-EB6D-4BDE-B3C6-8CD9C23A7318}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Core", "Basket\Basket.Core\Basket.Core.csproj", "{3CF4B8A3-EB6D-4BDE-B3C6-8CD9C23A7318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Infrastructure", "Basket\Basket.Infrastructure\Basket.Infrastructure.csproj", "{73BEDDBF-DBED-478A-AE0C-896F85C6BD6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Infrastructure", "Basket\Basket.Infrastructure\Basket.Infrastructure.csproj", "{73BEDDBF-DBED-478A-AE0C-896F85C6BD6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Basket\Basket.API\Basket.API.csproj", "{8D2BA0B0-F1B4-4691-BADC-178A26C9F633}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Basket\Basket.API\Basket.API.csproj", "{8D2BA0B0-F1B4-4691-BADC-178A26C9F633}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

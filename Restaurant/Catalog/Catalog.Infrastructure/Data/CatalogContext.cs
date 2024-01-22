@@ -9,6 +9,7 @@ namespace Catalog.Infrastructure.Data
     {
         public IMongoCollection<Product> Products { get; }
         public IMongoCollection<Category> Categories { get; }
+        public IMongoCollection<Table> Tables { get; }
 
         public CatalogContext(IConfiguration configuration)
         {
@@ -19,11 +20,13 @@ namespace Catalog.Infrastructure.Data
 
             Products = db.GetCollection<Product>(configuration.GetValue<string>($"{dbs}ProductsCollection"));
             Categories = db.GetCollection<Category>(configuration.GetValue<string>($"{dbs}CategoriesCollection"));
+            Tables = db.GetCollection<Table>(configuration.GetValue<string>($"{dbs}TablesCollection"));
 
             CreateUniqueFields(Categories, x => x.Name);
 
             SeedingFactory.Seed(Products, "products.json");
             SeedingFactory.Seed(Categories, "categories.json");
+            SeedingFactory.Seed(Tables, "tables.json");
         }
 
         private static void CreateUniqueFields<T>(IMongoCollection<T> collection, params Expression<Func<T, object>>[] fields)

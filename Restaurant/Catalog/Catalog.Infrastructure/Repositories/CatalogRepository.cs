@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Catalog.Infrastructure.Repositories
 {
-    public class CatalogRepository : IProductRepository, ICategoryRepository
+    public class CatalogRepository : IProductRepository, ICategoryRepository, ITableRepository
     {
         private readonly ICatalogContext _ctx;
 
@@ -66,6 +66,28 @@ namespace Catalog.Infrastructure.Repositories
 
         public Task DeleteCategory(string id)
             => _ctx.Categories.DeleteOneAsync(x => x.Id == id);
+
+        #endregion
+
+        #region Table
+
+        public async Task CreateTable(Table table)
+        {
+            table.CreatedOn = DateTime.Now;
+            await _ctx.Tables.InsertOneAsync(table);
+        }
+
+        public IFindFluent<Table, Table> GetTables(Expression<Func<Table, bool>> condition)
+            => _ctx.Tables.Find(condition);
+
+        public async Task UpdateTable(Table table)
+        {
+            table.ModifiedOn = DateTime.Now;
+            await _ctx.Tables.ReplaceOneAsync(x => x.Id == table.Id, table);
+        }
+
+        public Task DeleteTable(string id)
+            => _ctx.Tables.DeleteOneAsync(x => x.Id == id);
 
         #endregion
     }

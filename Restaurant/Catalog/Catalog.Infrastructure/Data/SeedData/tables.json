@@ -1,0 +1,17 @@
+[
+  {
+    "Id": "65ae40d7bc621e495748b8e7",
+    "Capacity": "2",
+    "Amount": "2" 
+  },
+  {
+    "Id": "65ae40d7bc621e495748b8e8",
+    "Capacity": "4",
+    "Amount": "3"
+  },
+  {
+    "Id": "65ae40d7bc621e495748b8e9",
+    "Capacity": "6",
+    "Amount": "1"
+  }
+]

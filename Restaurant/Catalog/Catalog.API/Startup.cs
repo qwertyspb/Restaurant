@@ -44,6 +44,7 @@ namespace Catalog.API
             services.AddScoped<ICatalogContext, CatalogContext>();
             services.AddScoped<IProductRepository, CatalogRepository>();
             services.AddScoped<ICategoryRepository, CatalogRepository>();
+            services.AddScoped<ITableRepository, CatalogRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
