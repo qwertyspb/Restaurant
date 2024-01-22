@@ -1,10 +1,10 @@
 ﻿using Basket.API.Mappers;
 using Basket.API.Models;
 using Basket.Application.Commands;
+using Basket.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using Basket.Application.Queries;
 
 namespace Basket.API.Controllers;
 
@@ -19,10 +19,30 @@ public class CartController : ApiController
 
     [HttpPost]
     [Route("[action]")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    public async Task<IActionResult> CreateOrUpdateCart(CreateOrUpdateCartApiModel model, CancellationToken token)
+    [ProducesResponseType(typeof(CreateCartApiResponse), (int)HttpStatusCode.OK)]
+    public async Task<IActionResult> CreateOrUpdateCart(CreateCartApiModel model, CancellationToken token)
     {
-        var command = ApiBasketMapper.Mapper.Map<CreateOrUpdateCartCommand>(model);
+        var command = new CreateCartCommand
+        {
+            UserName = model.UserName,
+            BookingStartDate = model.BookingStartDate,
+            BookingDuration = TimeSpan.FromHours(model.BookingDurationInHours),
+            VisitorsAmount = model.VisitorsAmount
+        };
+
+        var result = await _mediator.Send(command, token);
+
+        var apiResult = ApiBasketMapper.Mapper.Map<CreateCartApiResponse>(result);
+
+        return Ok(apiResult);
+    }
+
+    [HttpPatch]
+    [Route("[action]")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    public async Task<IActionResult> AddProductsToCart(AddProductsToCartApiModel model, CancellationToken token)
+    {
+        var command = ApiBasketMapper.Mapper.Map<AddProductsToCartCommand>(model);
 
         await _mediator.Send(command, token);
 

@@ -3,5 +3,6 @@
 public class Cart
 {
     public string UserName { get; set; }
-    public List<CartItem> Items { get; set; } = new();
+    public TableItem TableItem { get; set; }
+    public List<ProductItem> ProductItems { get; set; } = new();
 }

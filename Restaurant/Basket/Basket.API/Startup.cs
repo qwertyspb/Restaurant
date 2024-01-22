@@ -30,7 +30,7 @@ public class Startup
             options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
         });
 
-        services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<CreateOrUpdateCartHandler>());
+        services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<AddProductsToCartHandler>());
 
         services.AddScoped<ICartRepository, CartRepository>();
 

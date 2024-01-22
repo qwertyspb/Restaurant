@@ -6,29 +6,29 @@ using MediatR;
 
 namespace Basket.Application.Handlers;
 
-public class CreateOrUpdateCartHandler : IRequestHandler<CreateOrUpdateCartCommand>
+public class AddProductsToCartHandler : IRequestHandler<AddProductsToCartCommand>
 {
     private readonly ICartRepository _repo;
 
-    public CreateOrUpdateCartHandler(ICartRepository repo)
+    public AddProductsToCartHandler(ICartRepository repo)
     {
         _repo = repo;
     }
 
-    public async Task Handle(CreateOrUpdateCartCommand request, CancellationToken cancellationToken)
+    public async Task Handle(AddProductsToCartCommand request, CancellationToken cancellationToken)
     {
         var cart = await _repo.GetCart(request.UserName)
-                   ?? new Cart { UserName = request.UserName };
+                   ?? throw new InvalidOperationException("No cart was found.");
 
-        var itemsToAdd = BasketMapper.Mapper.Map<List<CartItem>>(request.Items);
+        var itemsToAdd = BasketMapper.Mapper.Map<List<ProductItem>>(request.ProductItems);
 
         foreach (var itemToAdd in itemsToAdd)
         {
-            var inCartItem = cart.Items.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
+            var inCartItem = cart.ProductItems.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
 
             if (inCartItem is null)
             {
-                cart.Items.Add(itemToAdd);
+                cart.ProductItems.Add(itemToAdd);
                 continue;
             }
 

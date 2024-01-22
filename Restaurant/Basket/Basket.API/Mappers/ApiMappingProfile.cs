@@ -10,11 +10,15 @@ public class ApiMappingProfile : Profile
 {
     public ApiMappingProfile()
     {
-        CreateMap<CreateOrUpdateCartApiModel, CreateOrUpdateCartCommand>();
-
-        CreateMap<CartItemApiModel, CartItemDto>()
+        CreateMap<ProductItemApiModel, ProductItemDto>()
             .ReverseMap();
 
         CreateMap<CartResponse, GetCartApiModel>();
+
+        CreateMap<CreateCartResponse, CreateCartApiResponse>();
+
+        CreateMap<AddProductsToCartApiModel, AddProductsToCartCommand>();
+
+        CreateMap<TableItemDto, TableItemApiModel>();
     }
 }
