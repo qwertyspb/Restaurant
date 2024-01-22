@@ -35,6 +35,6 @@ public class CreateOrUpdateCartHandler : IRequestHandler<CreateOrUpdateCartComma
             inCartItem.Quantity += itemToAdd.Quantity;
         }
 
-        await _repo.CreateOrUpdateCart(cart);
+        await _repo.CreateOrUpdateCart(cart, TimeSpan.FromDays(1));
     }
 }
