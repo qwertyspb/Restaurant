@@ -23,6 +23,7 @@ services:
       - "DatabaseSettings__DatabaseName=CatalogDb"
       - "DatabaseSettings__ProductsCollection=Products"
       - "DatabaseSettings__CategoriesCollection=Categories"
+      - "DatabaseSettings__TablesCollection=Tables"
     depends_on:
       - catalogdb
     ports:

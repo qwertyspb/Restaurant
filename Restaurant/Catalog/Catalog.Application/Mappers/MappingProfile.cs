@@ -14,6 +14,8 @@ namespace Catalog.Application.Mappers
                 .ForMember(dst => dst.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
 
             CreateMap<Pagination<Product>, Pagination<ProductModel>>();
+
+            CreateMap<Table, TableModel>();
         }
     }
 }

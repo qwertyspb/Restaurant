@@ -18,6 +18,7 @@ namespace Catalog.API.Mappers
             CreateMap<UpdateCategoryApiModel, UpdateCategoryCommand>();
             CreateMap<Pagination<ProductModel>, Pagination<ProductApiModel>>();
             CreateMap<ApiSearchFilter, SearchFilter>();
+            CreateMap<TableModel, TableApiModel>();
         }
     }
 }
