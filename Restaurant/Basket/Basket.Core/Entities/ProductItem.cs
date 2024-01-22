@@ -1,6 +1,6 @@
-﻿namespace Basket.API.Models;
+﻿namespace Basket.Core.Entities;
 
-public class CartItemApiModel
+public class ProductItem
 {
     public int Quantity { get; set; }
     public decimal Price { get; set; }
