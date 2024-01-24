@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Infrastructure", "Ba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Basket\Basket.API\Basket.API.csproj", "{8D2BA0B0-F1B4-4691-BADC-178A26C9F633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Test", "Basket\Basket.Test\Basket.Test.csproj", "{DBA2B7E0-D3E4-4711-B627-C6C3CB229AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Test", "Basket\Basket.Test\Basket.Test.csproj", "{DBA2B7E0-D3E4-4711-B627-C6C3CB229AE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

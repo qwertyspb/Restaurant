@@ -1,6 +1,8 @@
-﻿using Basket.Application.Mappers;
+﻿using Basket.Application.Extensions;
+using Basket.Application.Mappers;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
+using Basket.Application.Validators;
 using Basket.Core.IRepositories;
 using MediatR;
 
@@ -17,6 +19,8 @@ public class GetCartHandler : IRequestHandler<GetCartQuery, CartResponse>
 
     public async Task<CartResponse> Handle(GetCartQuery request, CancellationToken cancellationToken)
     {
+        request.Validate(new UserNameValidator<GetCartQuery>());
+
         var cart = await _repo.GetCart(request.UserName);
         return BasketMapper.Mapper.Map<CartResponse>(cart);
     }

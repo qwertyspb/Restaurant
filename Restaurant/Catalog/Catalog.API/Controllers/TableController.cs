@@ -61,7 +61,7 @@ public class TableController : ApiController
     }
 
     [HttpDelete]
-    [Route("[action]")]
+    [Route("[action]/{tableId}")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     public async Task<IActionResult> DeleteTable(string tableId, CancellationToken token)
     {
