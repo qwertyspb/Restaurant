@@ -1,7 +1,9 @@
-﻿using Catalog.Application.Helpers.SearchHelper;
+﻿using Catalog.Application.Extensions;
+using Catalog.Application.Helpers.SearchHelper;
 using Catalog.Application.Mappers;
 using Catalog.Application.Queries;
 using Catalog.Application.Responses;
+using Catalog.Application.Validators;
 using Catalog.Core.Entities;
 using Catalog.Core.IRepositories;
 using MediatR;
@@ -22,6 +24,8 @@ namespace Catalog.Application.Handlers
 
         public async Task<Pagination<ProductModel>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
+            request.Validate(new GetFilteredProductsQueryValidator());
+
             Token = cancellationToken;
             var requestFilter = request.SearchFilter;
 

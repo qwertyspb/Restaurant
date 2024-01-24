@@ -1,5 +1,7 @@
 ﻿using Basket.Application.Commands;
+using Basket.Application.Extensions;
 using Basket.Application.Mappers;
+using Basket.Application.Validators;
 using Basket.Core.Entities;
 using Basket.Core.IRepositories;
 using MediatR;
@@ -17,6 +19,8 @@ public class AddProductsToCartHandler : IRequestHandler<AddProductsToCartCommand
 
     public async Task Handle(AddProductsToCartCommand request, CancellationToken cancellationToken)
     {
+        request.Validate(new UserNameValidator<AddProductsToCartCommand>());
+
         var cart = await _repo.GetCart(request.UserName)
                    ?? throw new InvalidOperationException("No cart was found.");
 

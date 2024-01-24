@@ -1,4 +1,6 @@
 ﻿using Basket.Application.Commands;
+using Basket.Application.Extensions;
+using Basket.Application.Validators;
 using Basket.Core.IRepositories;
 using MediatR;
 
@@ -13,6 +15,9 @@ public class DeleteCartHandler : IRequestHandler<DeleteCartCommand>
         _repo = repo;
     }
 
-    public Task Handle(DeleteCartCommand request, CancellationToken cancellationToken)
-        => _repo.DeleteCart(request.UserName);
+    public async Task Handle(DeleteCartCommand request, CancellationToken cancellationToken)
+    {
+        request.Validate(new UserNameValidator<DeleteCartCommand>());
+        await _repo.DeleteCart(request.UserName);
+    }
 }

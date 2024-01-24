@@ -1,6 +1,7 @@
 ﻿using Catalog.Application.Commands;
 using Catalog.Core.IRepositories;
 using MediatR;
+using MongoDB.Driver;
 
 namespace Catalog.Application.Handlers;
 
@@ -13,6 +14,12 @@ public class DeleteTableHandler : IRequestHandler<DeleteTableCommand>
         _repo = repo;
     }
 
-    public Task Handle(DeleteTableCommand request, CancellationToken cancellationToken)
-        => _repo.DeleteTable(request.TableId);
+    public async Task Handle(DeleteTableCommand request, CancellationToken cancellationToken)
+    {
+        var table = await _repo.GetTables(x => x.Id.Equals(request.TableId))
+                        .FirstOrDefaultAsync(cancellationToken) ??
+                       throw new InvalidOperationException($"Category id={request.TableId} is not found.");
+
+        await _repo.DeleteTable(request.TableId);
+    }
 }

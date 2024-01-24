@@ -1,4 +1,6 @@
 ﻿using Catalog.Application.Commands;
+using Catalog.Application.Extensions;
+using Catalog.Application.Validators;
 using Catalog.Core.Entities;
 using Catalog.Core.IRepositories;
 using MediatR;
@@ -15,6 +17,8 @@ public class CreateTableHandler : IRequestHandler<CreateTableCommand>
     }
     public async Task Handle(CreateTableCommand request, CancellationToken cancellationToken)
     {
+        request.Validate(new CreateTableCommandValidator());
+
         var table = new Table
         {
             Capacity = request.Capacity,

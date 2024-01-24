@@ -1,5 +1,7 @@
 ﻿using Basket.Application.Commands;
+using Basket.Application.Extensions;
 using Basket.Application.Responses;
+using Basket.Application.Validators;
 using Basket.Core.Entities;
 using Basket.Core.IRepositories;
 using MediatR;
@@ -17,6 +19,8 @@ public class CreateCartHandler : IRequestHandler<CreateCartCommand, CreateCartRe
 
     public async Task<CreateCartResponse> Handle(CreateCartCommand request, CancellationToken cancellationToken)
     {
+        request.Validate(new CreateCartCommandValidator());
+
         var cart = await _repo.GetCart(request.UserName)
                    ?? new Cart { UserName = request.UserName };
 

@@ -50,7 +50,7 @@ public class CartController : ApiController
     }
 
     [HttpGet]
-    [Route("[action]")]
+    [Route("[action]/{userName}")]
     [ProducesResponseType(typeof(GetCartApiModel), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> GetCart(string userName, CancellationToken token)
     {

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace Catalog.Application.Commands
 {

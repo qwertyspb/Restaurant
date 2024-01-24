@@ -2,7 +2,6 @@
 
 namespace Basket.Application.Commands;
 
-public class DeleteCartCommand : IRequest
+public class DeleteCartCommand : UserNameBasedRequest, IRequest
 {
-    public string UserName { get; set; }
 }
