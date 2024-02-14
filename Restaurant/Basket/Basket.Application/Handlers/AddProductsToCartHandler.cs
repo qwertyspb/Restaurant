@@ -24,6 +24,8 @@ public class AddProductsToCartHandler : IRequestHandler<AddProductsToCartCommand
         var cart = await _repo.GetCart(request.UserName)
                    ?? throw new InvalidOperationException("No cart was found.");
 
+        // TODO: must be cross service request to get all info. Command kas only ProductId and Quantity
+
         var itemsToAdd = BasketMapper.Mapper.Map<List<ProductItem>>(request.ProductItems);
 
         foreach (var itemToAdd in itemsToAdd)

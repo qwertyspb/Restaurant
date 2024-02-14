@@ -27,7 +27,7 @@ public class CreateCartHandler : IRequestHandler<CreateCartCommand, CreateCartRe
         // TODO: get all appropriate tables from Catalog via messaging, choose table id or return Fail status
         //var response = await AskForTables(request.BookingStartDate, request.BookingDuration, request.VisitorsAmount);
 
-        //if (string.IsNullOrEmpty(response.tableId))
+        //if (string.IsNullOrEmpty(response.TableId))
         //    return new CreateCartResponse { IsSuccess = false, ErrorMessage = response.Message };
 
         var tableId = "65ae40d7bc621e495748b8e7";
