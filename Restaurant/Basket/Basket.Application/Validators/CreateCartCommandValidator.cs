@@ -20,6 +20,6 @@ public class CreateCartCommandValidator : UserNameValidator<CreateCartCommand>
 
         RuleFor(x => x.BookingDuration)
             .GreaterThanOrEqualTo(_minBookingDuration)
-            .WithMessage($"{nameof(CreateCartCommand.BookingDuration)} must be greater than {_minBookingDuration}");
+            .WithMessage($"{nameof(CreateCartCommand.BookingDuration)} must be equal or greater than {_minBookingDuration}");
     }
 }
