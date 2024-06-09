@@ -41,7 +41,7 @@ public static class DbExtensions
         cmd.CommandText = "DROP TABLE IF EXISTS Coupon";
         cmd.ExecuteNonQuery();
 
-        cmd.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY_KEY, 
+        cmd.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY, 
                                                 Code VARCHAR(20) NOT NULL UNIQUE,
                                                 Description TEXT,
                                                 Percent INT CHECK (Percent >= 1 AND Percent <= 100),
@@ -52,7 +52,7 @@ public static class DbExtensions
 
         cmd.CommandText =
             "INSERT INTO Coupon (Code, Description, Percent, ExpirationDate, CreatedOn) " +
-            "VALUES (BIRTHDAY, Coupon for birthday, 10, '9999-12-31', CURRENT_TIMESTAMP)";
+            "VALUES ('BIRTHDAY', 'Coupon for birthday', 10, '9999-12-31', CURRENT_TIMESTAMP)";
         cmd.ExecuteNonQuery();
     }
 }
