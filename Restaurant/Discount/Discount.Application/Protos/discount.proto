@@ -1,5 +1,7 @@
 ﻿syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "Discount.Grpc.Protos";
 
 service DiscountProtoService {
@@ -43,4 +45,5 @@ message CouponModel {
 	string code = 2;
 	string description = 3;
 	int32 percent = 4;
+	google.protobuf.Timestamp expirationDate = 5;
 }

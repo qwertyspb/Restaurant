@@ -16,12 +16,12 @@ public class CouponRepository : ICouponRepository, IDisposable
         _connection = new NpgsqlConnection(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
     }
 
-    public async Task<Coupon> GetCoupon(string code)
+    public async Task<Coupon?> GetCoupon(string code)
     {
         var coupon = await _connection.QueryFirstOrDefaultAsync<Coupon>
             ("SELECT * FROM Coupon WHERE Code = @Code", new { Code = code });
 
-        return coupon ?? new Coupon { Code = "No such coupon", Percent = 0, Description = "No such coupon" };
+        return coupon;
     }
 
     public async Task<bool> CreateCoupon(Coupon coupon)

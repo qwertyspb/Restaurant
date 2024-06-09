@@ -9,6 +9,6 @@ public class GetCouponQueryValidator : AbstractValidator<GetCouponQuery>
     {
         RuleFor(x => x.Code)
             .NotEmpty()
-            .WithMessage($"Parameter '{nameof(GetCouponQuery.Code)} must be provided'");
+            .WithMessage($"Parameter '{nameof(GetCouponQuery.Code)}' must be provided");
     }
 }
