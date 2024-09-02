@@ -41,9 +41,7 @@ message DeleteCouponResponse {
 
 
 message CouponModel {
-	int32 id = 1;
-	string code = 2;
-	string description = 3;
-	int32 percent = 4;
-	google.protobuf.Timestamp expirationDate = 5;
+	bool isNull = 1;
+	optional int32 percent = 2;
+	optional google.protobuf.Timestamp expirationDate = 3;
 }

@@ -1,4 +1,5 @@
-﻿using Discount.Application.Queries;
+﻿using Discount.API.Mappers;
+using Discount.Application.Queries;
 using Discount.Grpc.Protos;
 using Grpc.Core;
 using MediatR;
@@ -18,11 +19,13 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
 
     public override async Task<CouponModel> GetCoupon(GetCouponRequest request, ServerCallContext context)
     {
+        var result = new CouponModel { IsNull = true };
+
         var query = new GetCouponQuery { Code = request.Code };
-        var result = await _mediator.Send(query);
+        var response = await _mediator.Send(query);
 
-        _logger.LogInformation($"Coupon is retrieved for the Coupon Code={request.Code}");
+       _logger.LogInformation($"Coupon is retrieved for the Coupon Code={request.Code}");
 
-        return result;
+       return response is null ? result : DiscountMapper.Mapper.Map(response, result);
     }
 }

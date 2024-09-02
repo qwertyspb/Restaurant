@@ -1,4 +1,5 @@
 using Discount.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace Discount.API
 {
@@ -13,6 +14,10 @@ namespace Discount.API
 
         private static IHostBuilder CreateHostBuilder(string[] args)
             => Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureKestrel(x => x.ListenAnyIP(9002, o => o.Protocols = HttpProtocols.Http2));
+                });
     }
 }

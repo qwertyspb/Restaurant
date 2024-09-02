@@ -20,5 +20,7 @@ public class ApiMappingProfile : Profile
         CreateMap<AddProductsToCartApiModel, AddProductsToCartCommand>();
 
         CreateMap<TableItemDto, TableItemApiModel>();
+
+        CreateMap<CouponApplicationResponse, CouponApplicationApiResponse>();
     }
 }

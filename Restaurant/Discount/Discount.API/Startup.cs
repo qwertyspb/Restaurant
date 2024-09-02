@@ -1,4 +1,5 @@
-﻿using Discount.API.Services;
+﻿using Discount.API.Mappers;
+using Discount.API.Services;
 using Discount.Application.Handlers;
 using Discount.Application.Mappers;
 using Discount.Core.IRepositories;
@@ -14,7 +15,11 @@ public class Startup
 
         services.AddScoped<ICouponRepository, CouponRepository>();
 
-        services.AddAutoMapper(x => x.AddProfile<MappingProfile>());
+        services.AddAutoMapper(x =>
+        {
+            x.AddProfile<MappingProfile>();
+            x.AddProfile<ApiMappingProfile>();
+        });
 
         services.AddGrpc();
     }
@@ -30,7 +35,7 @@ public class Startup
         {
             builder.MapGrpcService<DiscountService>();
             builder.MapGet("/",
-                ctx => ctx.Response.WriteAsync(
+                async ctx => await ctx.Response.WriteAsync(
                     "Communication with gRPC endpoints must be made through a gRPC client."));
         });
     }
