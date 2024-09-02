@@ -1,8 +1,10 @@
 ﻿using Basket.API.Mappers;
 using Basket.Application.Handlers;
 using Basket.Application.Mappers;
+using Basket.Application.Services;
 using Basket.Core.IRepositories;
 using Basket.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -32,8 +34,6 @@ public class Startup
 
         services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<AddProductsToCartHandler>());
 
-        services.AddScoped<ICartRepository, CartRepository>();
-
         services.AddAutoMapper(x =>
         {
             x.AddProfile<MappingProfile>();
@@ -48,6 +48,13 @@ public class Startup
 
         services.AddHealthChecks()
             .AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
+
+        services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
+            x => x.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
+
+        
+        services.AddSingleton<ICartRepository, CartRepository>();
+        services.AddScoped<GrpcDiscountService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

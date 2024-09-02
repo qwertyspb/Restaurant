@@ -10,11 +10,8 @@ namespace Basket.API.Controllers;
 
 public class CartController : ApiController
 {
-    private readonly IMediator _mediator;
-
-    public CartController(IMediator mediator)
+    public CartController(IMediator mediator) : base(mediator)
     {
-        _mediator = mediator;
     }
 
     [HttpPost]

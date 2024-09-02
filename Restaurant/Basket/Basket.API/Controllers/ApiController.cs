@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.API.Controllers
@@ -8,5 +9,11 @@ namespace Basket.API.Controllers
     [ApiController]
     public class ApiController : ControllerBase
     {
+        protected readonly IMediator _mediator;
+
+        public ApiController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
     }
 }

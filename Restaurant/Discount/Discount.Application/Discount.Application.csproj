@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Discount.Core\Discount.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Commands\" />
+		<Folder Include="Handlers\" />
+		<Folder Include="Responses\" />
+		<Folder Include="Validators\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="FluentValidation" Version="11.9.0" />
+		<PackageReference Include="Google.Protobuf" Version="3.27.1" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+		<PackageReference Include="MediatR" Version="12.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+</Project>
